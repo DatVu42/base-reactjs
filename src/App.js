@@ -10,12 +10,21 @@ class App extends React.Component {
     address: 'CT03 Phong Bac'
   }
 
+  handleOnClick(event) {
+    console.log(event.target)
+  }
+
+  handleOnMouseOver(event) {
+    console.log(event.screenX, event.screenY)
+  }
+
   render() {
     return (
       <div>
-        Hello world
         <MyComponent />
         My name is {this.state.name}, address {this.state.address}
+        <button onClick={this.handleOnClick}>Handle click</button>
+        <button onMouseOver={this.handleOnMouseOver}>Handle OnMouseOver</button>
       </div>
     )
   }
