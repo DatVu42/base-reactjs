@@ -7,24 +7,38 @@ import React from 'react';
 class App extends React.Component {
   state = {
     name: 'BOM',
-    address: 'CT03 Phong Bac'
+    address: 'CT03 Phong Bac',
+    age: 38
   }
 
-  handleOnClick(event) {
-    console.log(this.state.name)
+  handleOnClick() {
+    this.setState({
+      name: 'Dat Vu',
+      age: Math.floor(Math.random() * 100) + 1
+    })
+    // console.log(this.state)
   }
 
-  handleOnMouseOver(event) {
-    console.log(event.target)
+  handleInputChange = (event) => {
+    this.setState({
+      name: event.target.value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state)
   }
 
   render() {
     return (
       <div>
         <MyComponent />
-        My name is {this.state.name}, address {this.state.address}
-        <button onClick={() => this.handleOnClick()}>Handle click</button>
-        <button onMouseOver={(event) => this.handleOnMouseOver(event)}>Handle OnMouseOver</button>
+        My name is {this.state.name}, age {this.state.age}
+        <form onSubmit={(event) => this.handleSubmit(event)}>
+          <input onChange={(event) => this.handleInputChange(event)} type="text" />
+          <button type='submit'>Submit</button>
+        </form>
       </div>
     )
   }
