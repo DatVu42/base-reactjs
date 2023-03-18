@@ -11,11 +11,11 @@ class App extends React.Component {
   }
 
   handleOnClick(event) {
-    console.log(event.target)
+    console.log(this.state.name)
   }
 
   handleOnMouseOver(event) {
-    console.log(event.screenX, event.screenY)
+    console.log(event.target)
   }
 
   render() {
@@ -23,8 +23,8 @@ class App extends React.Component {
       <div>
         <MyComponent />
         My name is {this.state.name}, address {this.state.address}
-        <button onClick={this.handleOnClick}>Handle click</button>
-        <button onMouseOver={this.handleOnMouseOver}>Handle OnMouseOver</button>
+        <button onClick={() => this.handleOnClick()}>Handle click</button>
+        <button onMouseOver={(event) => this.handleOnMouseOver(event)}>Handle OnMouseOver</button>
       </div>
     )
   }
