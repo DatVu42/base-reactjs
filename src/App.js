@@ -36,7 +36,7 @@ class App extends React.Component {
         <MyComponent />
         My name is {this.state.name}, age {this.state.age}
         <form onSubmit={(event) => this.handleSubmit(event)}>
-          <input onChange={(event) => this.handleInputChange(event)} type="text" />
+          <input value={this.state.name} onChange={(event) => this.handleInputChange(event)} type="text" />
           <button type='submit'>Submit</button>
         </form>
       </div>
