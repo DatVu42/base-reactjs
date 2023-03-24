@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserInfo from './UserInfo';
+import AddUserInfo from './AddUserInfo';
 import DisplayInfo from './DisplayInfo';
 
 export default class MyComponent extends Component {
@@ -11,10 +11,17 @@ export default class MyComponent extends Component {
     ]
   }
 
+  handleAddNewUser = (event) => {
+    // console.log(event);
+    this.setState({
+      listUsers: [event, ...this.state.listUsers]
+    })
+  }
+
   render() {
     return (
       <div>
-        <UserInfo />
+        <AddUserInfo handleAddNewUser={this.handleAddNewUser} />
         <br />
         <DisplayInfo listUsers={this.state.listUsers} />
       </div>
