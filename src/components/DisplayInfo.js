@@ -22,18 +22,18 @@ class DisplayInfo extends React.Component {
                     </span>
                 </div>
                 {this.state.isShowListUsers &&
-                    <div>
+                    <>
                         {listUsers.map((user) => {
                             const { id, name, age } = user;
                             return (
                                 <div key={id} className={age <= 30 ? "red" : "blue"}>
-                                    {name}
-                                    {age}
+                                    <span>Name: {name}</span> <span style={{margin: '20px'}}>Age: {age}</span>
+                                    <button onClick={() => this.props.handleDeleteUser(id)}>Delete</button>
                                     <hr />
                                 </div>
                             )
                         })}
-                    </div>
+                    </>
                 }
             </div>
         )
