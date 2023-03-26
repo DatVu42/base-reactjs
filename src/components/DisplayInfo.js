@@ -1,8 +1,14 @@
 import React from "react";
 
 class DisplayInfo extends React.Component {
-    state = {
-        isShowListUsers: true
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isShowListUsers: true
+        }
+
+        console.log("constructor")
     }
 
     toggleListUsers = () => {
@@ -11,9 +17,28 @@ class DisplayInfo extends React.Component {
         })
     }
 
+    componentDidMount() {
+        console.log("componentDidMount")
+        
+        setTimeout(() => {
+            document.title = 'Học ReactJS'
+        }, 3000)
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("componentDidUpdate")
+        // console.log(this.props, prevProps)
+        if (this.props.listUsers !== prevProps.listUsers) {
+            if (this.props.listUsers.length === 5) {
+                alert("You got 5 users!")
+            }
+        }
+    }
+
     render() {
         const { listUsers } = this.props;
         // console.log(this.props?.listUsers)
+        console.log("render")
         return (
             <div>
                 <div>
