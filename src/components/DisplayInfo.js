@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // class DisplayInfo extends React.Component {
 
@@ -28,10 +28,14 @@ import React from "react";
 
 const DisplayInfo = (props) => {
     const { listUsers } = props;
+    const [isShowHideListUsers, setShow] = useState(true)
 
     return (
         <div>
-            {true &&
+            <div onClick={() => setShow(!isShowHideListUsers)}>
+                {isShowHideListUsers ? 'Hide list users' : 'Show list users'}
+            </div>
+            {isShowHideListUsers &&
                 <>
                     {listUsers.map((user) => {
                         const { id, name, age } = user;
