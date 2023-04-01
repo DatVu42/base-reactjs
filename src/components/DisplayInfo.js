@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // class DisplayInfo extends React.Component {
 
@@ -28,7 +28,14 @@ import React, { useState } from "react";
 
 const DisplayInfo = (props) => {
     const { listUsers } = props;
-    const [isShowHideListUsers, setShow] = useState(true)
+    const [isShowHideListUsers, setShow] = useState(true);
+
+    useEffect(() => {
+      console.log("useEffect running");
+      if (listUsers.length === 0) {
+        alert("You removed all list users")
+      }
+    }, [listUsers]);
 
     return (
         <div>
